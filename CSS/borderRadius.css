@@ -1,0 +1,29 @@
+#footer,h1{
+    background-color: blue;
+    font-weight: bold;
+    width: 50%;
+    margin: auto;
+}
+h1{
+    font-size: x-large;
+}
+body{
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    background-color: azure;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    background-color: bisque;
+    border: solid 4px black;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    padding-top: 10px;
+}
+#body > tr > td{
+    border-left: solid 1px black;
+    border-bottom: solid 2px black;
+}
