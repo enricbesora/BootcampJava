@@ -1,10 +1,10 @@
-#footer,h1{
+#footer,caption{
     background-color: blue;
     font-weight: bold;
     width: 50%;
     margin: auto;
 }
-h1{
+caption{
     font-size: x-large;
 }
 body{
@@ -12,6 +12,7 @@ body{
     margin: auto;
     text-align: center;
     background-color: azure;
+    
 }
 
 table {
