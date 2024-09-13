@@ -2,7 +2,8 @@ div{
     width: 30%;
     height: 50%;
     padding: 75px;
-    margin: 15% 20% 20% 30%;
+    margin: auto;
+    margin-top: 10%;
     border-bottom: red 5px solid;
     border-left: black 5px double;
     border-top: green 5px dotted;
