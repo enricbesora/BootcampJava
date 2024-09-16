@@ -1,0 +1,20 @@
+body{
+    background-color: rgb(255, 174, 145);
+}
+div{
+    background-color: rgb(196, 196, 196);
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: auto;
+    margin-top: 5%;
+    width: 20%;
+}
+div:nth-child(1){
+    text-align: left;
+}
+div:nth-child(2){
+    text-align: center;
+}
+div:nth-child(3){
+    text-align: end;
+}
