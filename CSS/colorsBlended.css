@@ -1,0 +1,29 @@
+.circle {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+    position: absolute;
+  }
+  
+  .circle-1 {
+    background: red;
+  }
+  
+  .circle-2 {
+    background: rgb(0, 255, 0);
+    left: 80px;
+  }
+  
+  .circle-3 {
+    background: blue;
+    left: 40px;
+    top: 80px;
+  }
+  
+  .isolate {
+    isolation: isolate;
+    position: relative;
+    top: 10%;
+    left: 20%;
+  }
