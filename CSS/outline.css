@@ -1,0 +1,13 @@
+div{
+    background-color: red;
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    left:20%;
+    top: 20%;
+    outline: greenyellow dotted 20px;
+}
+
+div:hover {
+    outline: black dotted 10px;
+  }
