@@ -8,7 +8,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 66vw;
   margin-top: 0px;
 }
 
@@ -90,7 +89,6 @@ div>p {
 }
 
 #leftSide {
-  background-color: red;
   width: 46vw;
   display: flex;
   flex-direction: column;
@@ -98,11 +96,18 @@ div>p {
 }
 
 #weekPage {
-  height: 40vh;
+  height: 46vh;
   background-color: white;
 }
 
-#weekPage>section {
+.appSection>p {
+  display: flex;
+  justify-content: center;
+  margin-left: 0;
+  color: #c8c8c8;
+}
+
+.appSection>section {
   display: flex;
   justify-content: space-between;
   width: 90%;
@@ -111,20 +116,32 @@ div>p {
   border-bottom: grey 1px solid;
 }
 
-.weekApp {
+.mainSection {
   display: flex;
   flex-direction: row;
   height: 10vh;
   align-items: center;
   margin: 10px;
   justify-content: space-between;
+  border-top: grey 1px solid;
+  padding-top: 5px;
 }
 
-.weekApp>section {
+.mainSection>img {
+  width: 13%;
+  height: 80%;
+}
+
+.mainSection:first-of-type {
+  border-top: none;
+}
+
+.mainSection>section {
   display: flex;
   flex-direction: column;
   font-size: 11px;
   height: 100%;
+  width: 63%;
   align-items: stretch;
   justify-content: space-evenly;
 }
@@ -142,7 +159,7 @@ div>p {
   display: flex;
 }
 
-.comments > *{
+.comments>* {
   padding: 1px;
   margin-right: 5px;
   border: 1px solid grey;
@@ -150,21 +167,237 @@ div>p {
   text-align: center;
 }
 
-.phoneType{
+.phoneType {
   align-self: flex-end;
+  justify-content: flex-end;
   display: flex;
+  width: 17%;
 }
 
-.phoneType div:first-child{
-  background-color: grey;
+.phoneType div:first-child {
+  background-color: #c8c8c8;
+  padding: 3px;
+  border: 1px grey solid;
+  border-radius: 2px;
+  margin-right: 3px;
+  font-size: 11px;
+}
+
+.phoneType div:last-child {
+  font-size: 16px;
+  color: grey;
 }
 
 #todayPage {
-  height: 57vh;
-  background-color: chartreuse;
+  height: 52vh;
+  background-color: white;
 }
+
+#todayPage>section>p:last-child {
+  color: rgb(71, 71, 71);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+}
+
 
 #rightSide {
   background-color: aquamarine;
   width: 18vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#kittyBot {
+  height: 11vh;
+  background-color: white;
+  padding: 12px 12px 26px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#kittyBot>div {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+#kittyBot>div p:first-child {
+  font-size: 17px;
+  margin: 0px;
+}
+
+#kittyBot>div p:last-child {
+  margin: 0px;
+  color: #c8c8c8;
+}
+
+#kittyBot>input {
+  font-size: 12px;
+  background-color: coral;
+  color: white;
+  padding: 5px;
+}
+
+
+#upcomingChats {
+  height: 60vh;
+  background-color: white;
+  padding: 12px 12px 26px 12px;
+}
+
+#upcomingChats>p {
+  font-size: 15px;
+  display: block;
+  margin-bottom: 10px;
+  border-bottom: grey 1px solid;
+  margin-top: 0px;
+  height: 5%;
+}
+
+.liveChat {
+  display: flex;
+  align-items: center;
+  height: 12%;
+  margin-bottom: 16px;
+}
+
+.liveChat>img {
+  width: 15%;
+}
+
+.liveChat>div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.liveChat>div>p {
+  display: inline;
+  margin: 0px;
+  font-size: 14px;
+}
+
+#upcomingChats>p:last-of-type {
+  border-bottom: none;
+  border-top: grey 1px solid;
+  color: coral;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+}
+
+
+#tweets {
+  height: 17vh;
+  background-color: black;
+}
+
+@media (width < 992px) {
+  body {
+    width: 100%;
+  }
+
+  header>section {
+    width: 91vw;
+  }
+
+  nav {
+    width: 90vw;
+  }
+
+  #subscribeMail {
+    width: 95vw;
+  }
+
+  #mainPage {
+    justify-content: center;
+    width: 95vw;
+  }
+
+  #leftSide {
+    width: 95vw;
+  }
+
+  .appSection > section {
+    width: 97%;
+    margin-left: 2%;
+    align-items: center;
+}
+
+  .appSection>section>p {
+    font-size: 20px;
+  }
+
+  .mainSection {
+    padding: 5px;
+  }
+
+  .mainSection > img {
+    width: 8%;
+    margin-left: 22px;  
+  }
+
+  .mainSection > section {
+    font-size: 14px;
+    width: 70%;
+  }
+
+  #rightSide {
+    visibility: hidden;
+    width: 0px;
+  }
+}
+
+@media (width < 600px){
+  section > img {
+    width: 7%;
+  }
+  nav {
+    width: 95vw;
+  }
+  #subscribeMail {
+    width: 95vw;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 3px;
+  }
+  #subscribeMail > input[type=email] {
+    width: 23vw;
+    order: 3;
+  }
+
+  #subscribeMail > input[type=submit] {
+    width: 14vw;
+    order: 4;
+  }
+  div > p {
+    margin-left: 10%;
+  }
+  .mainSection > img {
+    width: 13%;
+    margin-left: 1%;
+  }
+
+  .mainSection > section {
+    font-size: 13px;
+    width: 62%;
+  }
+
+  .phoneType {
+    width: 22%;
+  }
+
+  #weekPage {
+    height: 50vh;
+  }
+
+  #todayPage {
+    height: 48vh;
+  }
+  
 }
