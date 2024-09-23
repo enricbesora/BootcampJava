@@ -1,0 +1,103 @@
+#redContainer *{
+    background-color: coral;
+    width: 49%;
+    height: 100px;
+}
+
+#greenContainer *{
+    background-color: greenyellow;
+    width: 100%;
+    height: 400px;
+}
+
+#blueContainer *{
+    background-color: blue;
+    width: 32%;
+    height: 150px;
+}
+
+#greyContainer *{
+    background-color: grey;
+    width: 24%;
+    height: 100px;
+}
+
+@media (width > 768px) {
+    body {
+        background-color: aquamarine;
+    }
+    
+    #redContainer{
+        display: flex;
+        justify-content: space-between;
+    }
+    #blueContainer{
+        display: flex;
+        justify-content: space-between;
+    }
+    #greyContainer{
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width:768px) {
+    body {
+        background-color: blueviolet;
+    }
+    #redContainer *{
+        width: 100%;
+        height: 40px;
+        margin-bottom: 5px;
+    }
+    #redContainer{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #greenContainer *{
+        height: 350px;
+    }
+
+    #blueContainer *{
+        width: 100%;
+        height: 50px;
+        margin-bottom: 5px;
+    }
+    
+    #blueContainer{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #greyContainer *{
+        width: 49%;
+        height: 70px;
+        margin-bottom: 5px;
+    }
+
+    #greyContainer{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}
+
+@media (width < 320px) {
+    body {
+        background-color: turquoise;
+    }
+
+    #greenContainer *{
+        height: 150px;
+    }
+
+    #blueContainer *{
+        height: 150px;
+    }
+
+    #greyContainer{
+        flex-wrap: nowrap;
+    }
+}
+
