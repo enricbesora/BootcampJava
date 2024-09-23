@@ -1,3 +1,3 @@
 let sign = prompt("Introduce tu nombre");
 
-alert(sign);
+alert("sign");
