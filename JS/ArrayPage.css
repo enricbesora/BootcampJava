@@ -1,0 +1,22 @@
+.box{
+    display: flex;
+    width: 240px;
+    justify-content: space-between;
+    border: black solid 1px;
+    height: 25px;
+    padding: 21px;
+}
+
+body > p {
+    margin-bottom: 0px;
+    position: relative;
+    top: 3px;
+    left: 30px;
+}
+
+.box > input {
+    width: 22%;
+}
+#array{
+    font-size: 22px;
+}
