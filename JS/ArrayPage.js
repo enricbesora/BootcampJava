@@ -3,13 +3,28 @@ let array = [];
 const RANDOM = ['⛅','🌚','🌞','🌬','🛬','🧟‍♂️','🤯','🐱‍🚀','🐱‍🏍','🐱‍🐉','🤡'];
 
 function refreshArray() {
-    document.getElementById("array").innerHTML = "<b>[</b>" + array + "<b>]</b>";
+    const arrayContainer = document.getElementById("array");
+    arrayContainer.innerHTML = "";  // Limpiar el contenedor
+    
+    array.forEach((item, index) => {
+        let span = document.createElement('span');
+        span.classList.add('array-item');
+        span.textContent = item;
+        
+        // Agregar animación de entrada
+        setTimeout(() => {
+            span.classList.add('show');
+        }, 50);
+        
+        arrayContainer.appendChild(span);
+    });
 }
+
 function getRandom() {
     return (Math.floor(Math.random() * RANDOM.length));
 }
 
-//Add
+// Add
 function pushArray() {
     array.push(RANDOM[getRandom()]);
     refreshArray();
@@ -24,29 +39,53 @@ function insertAtArray() {
     let pos = document.getElementById("insertNum").value;
     if(pos > -1){
         array.splice(pos,0,RANDOM[getRandom()]);
-    } else
+    } else {
         alert("La posicion debe ser positiva!😡");
+    }
     refreshArray();
 }
 
-//Remove
+// Remove
 function popArray() {
-    array.pop();
-    refreshArray();
+    if(array.length > 0) {
+        const lastItem = document.querySelector("#array span:last-child");
+        if (lastItem) {
+            lastItem.classList.add('remove');  // Aplicar animación de salida
+            setTimeout(() => {
+                array.pop();
+                refreshArray();
+            }, 500);  // Eliminar el elemento después de la animación
+        }
+    }
 }
 
 function shiftArray() {
-    array.shift();
-    refreshArray();
+    if(array.length > 0) {
+        const firstItem = document.querySelector("#array span:first-child");
+        if (firstItem) {
+            firstItem.classList.add('remove');  // Aplicar animación de salida
+            setTimeout(() => {
+                array.shift();
+                refreshArray();
+            }, 500);  // Eliminar el elemento después de la animación
+        }
+    }
 }
 
 function removeAtArray() {
     let pos = document.getElementById("removeNum").value;
-    if(pos > -1){
-        array.splice(pos,1);
-    } else
-        alert("La posicion debe ser positiva!😡");
-    refreshArray();
+    if(pos > -1 && pos < array.length){
+        const itemToRemove = document.querySelector(`#array span:nth-child(${pos})`);
+        if (itemToRemove) {
+            itemToRemove.classList.add('remove');
+            setTimeout(() => {
+                array.splice(pos, 1);
+                refreshArray();
+            }, 500);  
+        }
+    } else {
+        alert("La posicion debe ser válida!😡");
+    }
 }
 
 document.getElementById("push").onclick = function() {pushArray()};
@@ -56,4 +95,3 @@ document.getElementById("insertAt").onclick = function() {insertAtArray()};
 document.getElementById("pop").onclick = function() {popArray()};
 document.getElementById("shift").onclick = function() {shiftArray()};
 document.getElementById("removeAt").onclick = function() {removeAtArray()};
-
