@@ -1,0 +1,43 @@
+.box {
+    display: flex;
+    width: 240px;
+    justify-content: space-between;
+    border: black solid 1px;
+    height: 25px;
+    padding: 21px;
+}
+
+body>p {
+    margin-bottom: 0px;
+    position: relative;
+    top: 3px;
+    left: 30px;
+}
+
+.box>input {
+    width: 22%;
+}
+
+#array {
+    font-size: 22px;
+}
+
+.array-item {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    font-size: 2rem; 
+    margin: 0 5px; 
+}
+
+.array-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.array-item.remove {
+    opacity: 0;
+    transform: translateY(500%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}

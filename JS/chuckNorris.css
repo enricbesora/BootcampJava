@@ -1,0 +1,33 @@
+body {
+    background-color: #fefefe;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    border: 2px solid black;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.nes-avatar {
+    width: 80px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.nes-text.is-primary {
+    color: #0066cc;
+    font-size: 1.2em;
+}
