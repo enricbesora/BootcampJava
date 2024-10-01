@@ -23,55 +23,65 @@ document.getElementById("gambaBtn")?.addEventListener("click", sleepGamba);
 document.getElementById("nightBtn")?.addEventListener("click", sleepNight);
 
 function timeMoving(): void {
-    fun -= 20;
-    strength-= 10;
-    full -= 10;
-    refreshWhite();
+    fun = checkValue(fun - 20);
+    strength = checkValue(strength - 10);
+    full = checkValue(full - 10);
+    refreshWhite(false);
 }
 
-function checkValue(num: number): number{
+function checkValue(num: number): number {
     return Math.min(Math.max(num, min), max);
 }
 
-function refreshWhite() {
-    happiness = (fun + energy + strength + full) / 4;
-    if (happiness > 100) happiness = 100;
-    if (happiness < 0) happiness = 0;
-    refreshBarAndNum("happiness",happiness);
-    refreshBarAndNum("fun",fun);
-    refreshBarAndNum("energy",energy);
-    refreshBarAndNum("strength",strength);
-    refreshBarAndNum("full",full);
-    if(happiness > 50){
-        document.getElementById("mrWhiteImg")?.setAttribute("src","./bunnyHappy.png");
-    } else if (happiness > 20){
-        document.getElementById("mrWhiteImg")?.setAttribute("src","./bunnySad.png");
-    } else {
-        document.getElementById("mrWhiteImg")?.setAttribute("src","./bunnyBad.png")
+function refreshWhite(change: boolean) {
+    happiness = checkValue((fun + energy + strength + full) / 4);
+    refreshBarAndNum("happiness", happiness);
+    refreshBarAndNum("fun", fun);
+    refreshBarAndNum("energy", energy);
+    refreshBarAndNum("strength", strength);
+    refreshBarAndNum("full", full);
+
+    if (!change) {
+        if (happiness > 50) {
+            document.getElementById("mrWhiteImg")?.setAttribute("src", "./bunnyHappy.png");
+        } else if (happiness > 20) {
+            document.getElementById("mrWhiteImg")?.setAttribute("src", "./bunnySad.png");
+        } else {
+            document.getElementById("mrWhiteImg")?.setAttribute("src", "./bunnyBad.png");
+        }
+    }
+
+    updateHearts();
+}
+
+function updateHearts() {
+    const heartsElement = document.getElementById("hearts");
+    if (heartsElement) {
+        const heartCount = Math.round(happiness / 20);
+        heartsElement.innerText = "♥".repeat(heartCount);
     }
 }
 
-function refreshBarAndNum(id:string, num:number) {
-    if(num < 0){
-        num = 0;
-    }
-    if(num > 100){
-        num = 100;
-    }
+function refreshBarAndNum(id: string, num: number) {
+    num = checkValue(num);
     let barId: string = id + "Bar";
     let numId: string = id + "Num";
     let barValue: string = num.toString() + "%";
     const barElement = document.getElementById(barId);
+    
     if (barElement) {
         barElement.style.width = barValue;
-        if(num <= 50){
+        if (num <= 50) {
             barElement.style.backgroundColor = "orange";
-        } else if (num <= 20){
+        } 
+        if (num <= 20) {
             barElement.style.backgroundColor = "red";
-        } else {
+        } 
+        if(num > 50) {
             barElement.style.backgroundColor = "green";
         }
     }
+    
     const element = document.getElementById(numId);
     if (element) {
         element.innerText = barValue + " " + id;
@@ -79,96 +89,108 @@ function refreshBarAndNum(id:string, num:number) {
 }
 
 function eatIceCream() {
-    full += 10;
-    energy -= 0;
-    fun += 5;
-    refreshWhite();
+    full = checkValue(full + 10);
+    energy = checkValue(energy - 0);
+    fun = checkValue(fun + 5);
+    document.getElementById("mrWhiteImg")?.setAttribute("src", "./bunnyEat.png");
+    refreshWhite(true);
 }
 
 function eatCarrot() {
-    full += 20;
-    energy -= 5;
-    refreshWhite();
+    full = checkValue(full + 20);
+    energy = checkValue(energy - 5);
+    document.getElementById("mrWhiteImg")?.setAttribute("src", "./bunnyEat.png");
+    refreshWhite(true);
 }
 
 function eatMeat() {
-    full += 30;
-    energy -= 10;
-    strength += 5;
-    refreshWhite();
+    full = checkValue(full + 30);
+    energy = checkValue(energy - 10);
+    strength = checkValue(strength + 5);
+    document.getElementById("mrWhiteImg")?.setAttribute("src", "./bunnyEat.png");
+    refreshWhite(true);
 }
 
-function playPs5(){
-    full -= 10;
-    energy -= 10;
-    strength -= 10;
-    fun += 30;
-    refreshWhite();
+function playPs5() {
+    full = checkValue(full - 10);
+    energy = checkValue(energy - 10);
+    strength = checkValue(strength - 10);
+    fun = checkValue(fun + 30);
+    document.getElementById("mrWhiteImg")?.setAttribute("src", "./bunnyPlaying.png");
+    refreshWhite(true);
 }
 
-function playBall(){
-    full -= 20;
-    energy -= 30;
-    strength += 5;
-    fun += 10;
-    refreshWhite();
+function playBall() {
+    full = checkValue(full - 20);
+    energy = checkValue(energy - 30);
+    strength = checkValue(strength + 5);
+    fun = checkValue(fun + 10);
+    document.getElementById("mrWhiteImg")?.setAttribute("src", "./bunnyPlaying.png");
+    refreshWhite(true);
 }
 
-function playGambling(){
-    full -= 5;
-    energy -= 10;
-    strength -= 5;
+function playGambling() {
+    full = checkValue(full - 5);
+    energy = checkValue(energy - 10);
+    strength = checkValue(strength - 5);
     if (Math.random() < 0.5) {
-        fun += 50;
+        fun = checkValue(fun + 50);
     } else {
-        fun -= 50;
+        fun = checkValue(fun - 50);
     }
-    refreshWhite();
+    document.getElementById("mrWhiteImg")?.setAttribute("src", "./bunnyPlaying.png");
+    refreshWhite(true);
 }
 
-function fightBox(){
-    full -= 30;
-    energy -= 30;
-    strength += 20;
-    fun += 10;
-    refreshWhite();
+function fightBox() {
+    full = checkValue(full - 20);
+    energy = checkValue(energy - 20);
+    strength = checkValue(strength + 20);
+    fun = checkValue(fun + 10);
+    document.getElementById("mrWhiteImg")?.setAttribute("src", "./bunnyFight.png");
+    refreshWhite(true);
 }
 
-function fightRun(){
-    full -= 20;
-    energy -= 30;
-    strength += 25;
-    fun -= 10;
-    refreshWhite();
+function fightRun() {
+    full = checkValue(full - 20);
+    energy = checkValue(energy - 30);
+    strength = checkValue(strength + 45);
+    fun = checkValue(fun - 10);
+    document.getElementById("mrWhiteImg")?.setAttribute("src", "./bunnyFight.png");
+    refreshWhite(true);
 }
 
-function fightKick(){
-    full -= 15;
-    energy -= 20;
-    strength += 15;
-    fun += 5;
-    refreshWhite();
+function fightKick() {
+    full = checkValue(full - 15);
+    energy = checkValue(energy - 20);
+    strength = checkValue(strength + 15);
+    fun = checkValue(fun + 5);
+    document.getElementById("mrWhiteImg")?.setAttribute("src", "./bunnyFight.png");
+    refreshWhite(true);
 }
 
-function sleepBed(){
-    full -= 30;
-    energy += 20;
-    strength -= 5;
-    refreshWhite();
+function sleepBed() {
+    full = checkValue(full - 5);
+    energy = checkValue(energy + 20);
+    strength = checkValue(strength - 5);
+    document.getElementById("mrWhiteImg")?.setAttribute("src", "./bunnySleep.png");
+    refreshWhite(true);
 }
 
-function sleepGamba(){
-    full -= 40;
-    energy += 30;
-    strength -= 20;
-    fun += 5;
-    refreshWhite();
+function sleepGamba() {
+    full = checkValue(full - 40);
+    energy = checkValue(energy + 30);
+    strength = checkValue(strength - 20);
+    fun = checkValue(fun + 5);
+    document.getElementById("mrWhiteImg")?.setAttribute("src", "./bunnySleep.png");
+    refreshWhite(true);
 }
 
-function sleepNight(){
-    full -= 50;
-    energy += 70;
-    refreshWhite();
+function sleepNight() {
+    full = checkValue(full - 50);
+    energy = checkValue(energy + 70);
+    document.getElementById("mrWhiteImg")?.setAttribute("src", "./bunnySleep.png");
+    refreshWhite(true);
 }
 
 setInterval(() => {

@@ -74,23 +74,23 @@ button{
 }
 
 #fullBar{
-    width: 100%;
+    width: 50%;
 }
 
 #funBar{
-    width: 100%;
+    width: 50%;
 }
 
 #strengthBar {
-    width: 100%;
+    width: 50%;
 }
 
 #energyBar {
-    width: 100%;
+    width: 50%;
 }
 
 #happinessBar{
-    width: 100%;
+    width: 50%;
 }
 
 .divAction > p {
@@ -120,6 +120,10 @@ button{
     margin-right: 30%;
     margin-bottom: 30%;
     color: blue;
+}
+
+#hearts{
+    color: red;
 }
 
 #bunnyWhite{
