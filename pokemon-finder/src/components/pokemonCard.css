@@ -1,0 +1,46 @@
+.card {
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+  }
+  
+  .poke-icon {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .pokemon-types {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .type-icon {
+    width: 20px; 
+    height: 20px;
+    margin-left: 5px; 
+    vertical-align: middle; 
+  }
+  
+  .pokemon-sprite {
+    width: 100px;
+    height: 100px;
+  }
+  
+  h2 {
+    margin-top: 10px;
+    text-transform: capitalize;
+  }
+  
