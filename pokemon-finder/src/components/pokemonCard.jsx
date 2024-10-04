@@ -8,6 +8,9 @@ const PokemonCard = ({ pokemon }) => {
   
   const type = types[0].type.name;
   const backgroundClass = `bg-poke-color-light-${type}`;
+
+  const nameClass = name.length > 10 ? 'long-name' : '';
+
   
   return (
     <div className='card' style={{ backgroundColor: `var(--bg-poke-color-light-${pokemon.types[0].type.name})`}}>
@@ -29,7 +32,7 @@ const PokemonCard = ({ pokemon }) => {
           </div>
         </div>
         <img src={sprites.front_default} alt={name} className="pokemon-sprite" />
-        <h5>{name}</h5>
+        <h5 className={`pokemon-name ${nameClass}`}>{name}</h5>
       </div>
     </div>
   );
