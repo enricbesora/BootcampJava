@@ -13,13 +13,15 @@ const PokemonCard = ({ pokemon }) => {
     <div className='card' style={{ backgroundColor: `var(--bg-poke-color-light-${pokemon.types[0].type.name})`}}>
      <div className="card-content">
         <div className="card-header">
-          <img src={pokeballIcon} alt="Pokéball Icon" className="poke-icon" />
-          <span># {id}</span>
+          <div className='pokemon-number'>
+            <img src={pokeballIcon} alt="Pokéball Icon" className="poke-icon" />
+            <span>#{id}</span>
+          </div>
           <div className="pokemon-types">
             {types.map((t, index) => (
               <img
                 key={index}
-                className='card__badge-Icon'
+                className='type-icon'
                 src={searchIcon(t.type.name)}
                 alt={`${t.type.name} type icon`}
               />
@@ -27,7 +29,7 @@ const PokemonCard = ({ pokemon }) => {
           </div>
         </div>
         <img src={sprites.front_default} alt={name} className="pokemon-sprite" />
-        <h2>{name}</h2>
+        <h5>{name}</h5>
       </div>
     </div>
   );
