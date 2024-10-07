@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SearchBar = ({ getQuery, pokemons}) => {
+const SearchBar = ({ getQuery, pokemons, pokemonNames, fetchPokemonByName}) => {
   const [text, setText] = useState('');
   const [suggestions, setSuggestions] = useState([]);
 
@@ -10,8 +10,8 @@ const SearchBar = ({ getQuery, pokemons}) => {
     const lower = q.toLowerCase();
     
     if (lower.length >= 3) {
-        const filteredSuggestions = pokemons.filter(pokemon => 
-            pokemon.name.toLowerCase().startsWith(lower)
+        const filteredSuggestions = pokemonNames.filter(name => 
+            name.toLowerCase().startsWith(lower)
         );
         setSuggestions(filteredSuggestions);
     } else {
@@ -22,9 +22,14 @@ const SearchBar = ({ getQuery, pokemons}) => {
 };
 
 const handleSuggestionClick = (suggestion) => {
-    setText(suggestion.name);
+    setText(suggestion);
     setSuggestions([]);
-    getQuery(suggestion.name.toLowerCase()); 
+    const pokemonExists = pokemons.some(pokemon => pokemon.name === suggestion);
+
+    if (!pokemonExists) {
+        fetchPokemonByName(suggestion.toLowerCase());
+    }
+    getQuery(suggestion.toLowerCase()); 
 };
 
   return (
@@ -41,9 +46,9 @@ const handleSuggestionClick = (suggestion) => {
       </form>
       {suggestions.length > 0 && (
                 <ul className="suggestions">
-                    {suggestions.map((pokemon) => (
-                        <li key={pokemon.id} onClick={() => handleSuggestionClick(pokemon)}>
-                            {pokemon.name}
+                    {suggestions.map((name,index) => (
+                        <li key={index} onClick={() => handleSuggestionClick(name)}>
+                            {name}
                         </li>
                     ))}
                 </ul>

@@ -32,7 +32,9 @@ const PokemonCard = ({ pokemon }) => {
           </div>
         </div>
         <img src={sprites.front_default} alt={name} className="pokemon-sprite" />
-        <h5 className={`pokemon-name ${nameClass}`}>{name}</h5>
+        <div className='nameContent'>
+          <p className={`pokemon-name ${nameClass}`}>{name}</p>
+        </div>
       </div>
     </div>
   );
