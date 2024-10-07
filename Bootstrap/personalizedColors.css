@@ -11964,4 +11964,8 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+.bg-custom-color {
+  background-color: #ff6347; /* Puedes cambiar este color */
+  color: white; /* Color de texto opcional para mejor legibilidad */
 }/*# sourceMappingURL=personalizedColors.css.map */
