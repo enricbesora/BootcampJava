@@ -6,15 +6,14 @@ import pokemonNamesData from '../assets/pokemonNames.json';
 import axios from 'axios';
 
 const Home = () => {
-    const [allPokemons, setAllPokemons] = useState([]); // Lista completa de Pokémon
-    const [filteredPokemons, setFilteredPokemons] = useState([]); // Pokémon filtrados
-    const [query, setQuery] = useState(''); // Búsqueda actual
-    const [offset, setOffset] = useState(0); // Desplazamiento para la carga de más Pokémon
-    const [pokemonNames, setPokemonNames] = useState([]); // Nombres de Pokémon cargados localmente
+    const [allPokemons, setAllPokemons] = useState([]); 
+    const [filteredPokemons, setFilteredPokemons] = useState([]); 
+    const [query, setQuery] = useState(''); 
+    const [offset, setOffset] = useState(0); 
+    const [pokemonNames, setPokemonNames] = useState([]); 
 
 
     useEffect(() => {
-        // Cargar nombres desde el archivo JSON
         setPokemonNames(pokemonNamesData.pokemonNames);
     }, []);
 
@@ -39,7 +38,7 @@ const Home = () => {
             );
             setFilteredPokemons(newFilteredPokemons);
         } else {
-            setFilteredPokemons(updatedAllPokemons); // Si no hay filtro, mostramos todos
+            setFilteredPokemons(updatedAllPokemons); 
         }
     };
 
@@ -48,12 +47,11 @@ const Home = () => {
     }, []);
 
     const fetchPokemonByName = async (name) => {
-        // Hacemos fetch del Pokémon por su nombre específico
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
         const pokemon = await response.json();
 
         setAllPokemons([...allPokemons, pokemon]);
-        setFilteredPokemons([...filteredPokemons, pokemon]); // Actualizamos el listado filtrado
+        setFilteredPokemons([...filteredPokemons, pokemon]);
     };
 
     const handleSearch = (q) => {
@@ -61,7 +59,7 @@ const Home = () => {
         const filtered = allPokemons.filter(pokemon =>
             pokemon.name.toLowerCase().includes(q.toLowerCase())
         );
-        setFilteredPokemons(filtered); // Filtrado dinámico por cada letra
+        setFilteredPokemons(filtered); 
     };
 
     return (
