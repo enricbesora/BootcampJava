@@ -1,10 +1,10 @@
 .col-3{
-    height: 20vh;
+    height: 15vh;
     width: 20%;
 }
 
 .row{
-    height: 40vh;
+    height: 30vh;
 }
 
 #blue > *{
@@ -25,12 +25,14 @@
 }
 
 #orange{
-    height: 25vh;
+    height: 19vh;
 }
 
 
 #orange > *{
     background-color: orange;
+    height: 15vh;
+    width: 20%;
 }
 
 @media (width < 768px) {
@@ -50,7 +52,32 @@
         height: 15vh;
     }
 
-    h4{
-        content: 'Tablet';
+    #orange > *{
+        height: 15vh;
+        width: 45%;
     }
+}
+
+@media (width < 576px) {
+
+    #blue{
+        height: 35vh;
+    }
+
+    #blue > *{
+        width: 48%;
+    }
+
+    #grey{
+        height: 35vh;
+    }
+    
+    #grey > *{
+        width: 48%;
+    }
+
+    #orange{
+        height: 20vh;
+    }
+    
 }
