@@ -16,34 +16,35 @@
 <body class="container-fluid">
     <header>
         <nav class="navbar navbar-expand navbar-light bg-success justify-content-center" style="height: 50px">
+            Header
         </nav>
     </header>
     <main>
-        <div class="container-fluid">
-            <div class="row justify-content-between align-items-center d-flex flex-row flex-wrap" id="blue">
-                <div class="col-3 align-self-start order-2 border border-dark">
+        <div class="container-fluid d-flex flex-column">
+            <div class="row justify-content-between align-items-center d-flex flex-row flex-wrap order-md-1 order-sm-1" id="blue">
+                <div class="col-3 align-self-md-start order-md-2 border border-dark">
                     <div class="d-flex align-items-center justify-content-center" style="height: 100%;">
                         1
                     </div>
                 </div>
-                <div class="col-3 align-self-start order-3 border border-dark">
+                <div class="col-3 align-self-md-start order-md-3 border border-dark">
                     <div class="d-flex align-items-center justify-content-center" style="height: 100%;">
                         2
                     </div>
                 </div>
-                <div class="col-3 align-self-end order-1 border border-dark">
+                <div class="col-3 align-self-md-end order-md-1 border border-dark">
                     <div class="d-flex align-items-center justify-content-center" style="height: 100%;">
                         3
                     </div>
                 </div>
-                <div class="col-3 align-self-end order-4 border border-dark">
+                <div class="col-3 align-self-md-end order-md-4 border border-dark">
                     <div class="d-flex align-items-center justify-content-center" style="height: 100%;">
                         4
                     </div>
                 </div>
             </div>
 
-            <div class="row justify-content-between align-items-center d-flex flex-row flex-wrap" id="grey">
+            <div class="row justify-content-between align-items-center d-flex flex-row flex-wrap order-md-2 order-sm-3" id="grey">
                 <div class="col-3 border border-dark">
                     <div class="d-flex align-items-center justify-content-center" style="height: 100%;">
                         1
@@ -66,17 +67,20 @@
                 </div>
             </div>
 
-            <div class="row align-items-center border border-dark" id="platform">
-                <h4 class="d-flex align-items-center justify-content-center">Desktop</h4>
+            <div class="row align-items-center border border-dark order-md-3 order-sm-2" id="platform">
+                <h4 class="d-none d-md-flex align-items-center justify-content-center">Desktop</h4>
+                <h4 class="d-none d-sm-flex d-md-none align-items-center justify-content-center">Tablet</h4>
+                <h4 class="d-flex d-sm-none align-items-center justify-content-center">Mobile</h4>
+
             </div>
 
-            <div class="row justify-content-center align-items-center d-flex flex-row flex-wrap mt-5" id="orange">
-                <div class="col-3 align-self-start order-2 border border-dark">
+            <div class="row justify-content-center align-items-center d-flex flex-row flex-wrap order-md-4 order-sm-4" id="orange">
+                <div class="col-3 order-md-2 border border-dark">
                     <div class="d-flex align-items-center justify-content-center" style="height: 100%;">
                         :/
                     </div>
                 </div>
-                <div class="col-3 align-self-start order-3 border border-dark offset-1">
+                <div class="col-3 order-md-3 border border-dark offset-1">
                     <div class="d-flex align-items-center justify-content-center" style="height: 100%;">
                         :D
                     </div>
@@ -86,7 +90,9 @@
         </div>
     </main>
     <footer>
-        <!-- place footer here -->
+        <nav class="navbar navbar-expand navbar-light bg-success justify-content-center border border-dark" style="height: 30px">
+            Footer
+        </nav>
     </footer>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

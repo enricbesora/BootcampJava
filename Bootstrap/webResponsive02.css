@@ -32,3 +32,25 @@
 #orange > *{
     background-color: orange;
 }
+
+@media (width < 768px) {
+    .row {
+        height: 25vh;
+    }
+
+    #grey{
+        height: 20vh;
+    }
+
+    #orange{
+        height: 20vh;
+    }
+
+    .col-3 {
+        height: 15vh;
+    }
+
+    h4{
+        content: 'Tablet';
+    }
+}
