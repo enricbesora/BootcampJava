@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { searchIcon } from '../utils/icons';
 
-const TypeActionButton = ({ resetFilters }) => {
+const TypeActionButton = ({ resetFilters, onTypeSelect }) => {
     const [selectedType, setSelectedType] = useState(null);
 
     const handleTypeClick = (type) => {
-        setSelectedType(type === selectedType ? null : type); 
+        const newType = type === selectedType ? null : type; 
+        setSelectedType(newType);
+        onTypeSelect(newType); 
     };
 
     const handleResetClick = () => {
         setSelectedType(null);
+        onTypeSelect(null);
         resetFilters(); 
     };
 

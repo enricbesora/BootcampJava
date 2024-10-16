@@ -15,6 +15,7 @@ const Home = () => {
     const [offset, setOffset] = useState(0); 
     const [pokemonNames, setPokemonNames] = useState([]); 
     const [clearSearch, setClearSearch] = useState(false);
+    const [selectedType, setSelectedType] = useState(null);
 
 
     useEffect(() => {
@@ -44,21 +45,32 @@ const Home = () => {
         setAllPokemons(updatedAllPokemons);
         setOffset(offset + 20);
     
-        if (query) {
-            const newFilteredPokemons = updatedAllPokemons.filter(pokemon =>
-                pokemon.name.toLowerCase().includes(query)
+        applyFilters(updatedAllPokemons, query, selectedType);
+    };
+
+    const applyFilters = (pokemons, searchQuery, type) => {
+        let filtered = pokemons;
+
+        if (searchQuery) {
+            filtered = filtered.filter(pokemon =>
+                pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
             );
-    
-            newFilteredPokemons.sort((a, b) => a.id - b.id);
-            setFilteredPokemons(newFilteredPokemons);
-        } else {
-            setFilteredPokemons(updatedAllPokemons); 
         }
+
+        if (type) {
+            filtered = filtered.filter(pokemon =>
+                pokemon.types.some(pokemonType => pokemonType.type.name === type) // Filtrar por tipo
+            );
+        }
+
+        filtered.sort((a, b) => a.id - b.id);
+        setFilteredPokemons(filtered);
     };
 
 
     const resetFilters = () => {
         setQuery('');
+        setSelectedType(null);
         setFilteredPokemons(allPokemons); 
         setClearSearch(true); 
 
@@ -87,10 +99,12 @@ const Home = () => {
 
     const handleSearch = (q) => {
         setQuery(q);
-        const filtered = allPokemons.filter(pokemon =>
-            pokemon.name.toLowerCase().includes(q.toLowerCase())
-        );
-        setFilteredPokemons(filtered); 
+        applyFilters(allPokemons, q, selectedType);
+    };
+
+    const handleTypeSelect = (type) => {
+        setSelectedType(type);
+        applyFilters(allPokemons, query, type);
     };
 
     return (
@@ -99,7 +113,7 @@ const Home = () => {
             <SearchBar getQuery={handleSearch} pokemons={allPokemons} pokemonNames={pokemonNames} fetchPokemonByName={fetchPokemonByName} clearSearch={clearSearch} /> 
             <PokemonGrid pokemons={filteredPokemons} />
             <LoadMoreButton onClick={fetchPokemons} />
-            <TypeActionButton resetFilters={resetFilters} />
+            <TypeActionButton resetFilters={resetFilters} onTypeSelect={handleTypeSelect} />
         </div>
     );
 };
