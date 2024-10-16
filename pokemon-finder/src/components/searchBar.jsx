@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SearchBar = ({ getQuery, pokemons, pokemonNames, fetchPokemonByName}) => {
+const SearchBar = ({ getQuery, pokemons, pokemonNames, fetchPokemonByName,clearSearch}) => {
   const [text, setText] = useState('');
   const [suggestions, setSuggestions] = useState([]);
 
@@ -31,6 +31,12 @@ const handleSuggestionClick = (suggestion) => {
     }
     getQuery(suggestion.toLowerCase()); 
 };
+React.useEffect(() => {
+  if (clearSearch) {
+      setText('');
+      setSuggestions([]);
+  }
+}, [clearSearch]);
 
   return (
     <section className='search-bar row'>

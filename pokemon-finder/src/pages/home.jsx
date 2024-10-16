@@ -14,6 +14,7 @@ const Home = () => {
     const [query, setQuery] = useState(''); 
     const [offset, setOffset] = useState(0); 
     const [pokemonNames, setPokemonNames] = useState([]); 
+    const [clearSearch, setClearSearch] = useState(false);
 
 
     useEffect(() => {
@@ -55,6 +56,17 @@ const Home = () => {
         }
     };
 
+
+    const resetFilters = () => {
+        setQuery('');
+        setFilteredPokemons(allPokemons); 
+        setClearSearch(true); 
+
+        setTimeout(() => {
+            setClearSearch(false);
+        }, 100);
+    };
+
     useEffect(() => {
         fetchPokemons();
     }, []);
@@ -84,10 +96,10 @@ const Home = () => {
     return (
         <div className="container">
             <h1 className="center-align">Pokédex</h1>
-            <SearchBar getQuery={handleSearch} pokemons={allPokemons} pokemonNames={pokemonNames} fetchPokemonByName={fetchPokemonByName} /> {/* Pasamos la lista completa de Pokémon */}
+            <SearchBar getQuery={handleSearch} pokemons={allPokemons} pokemonNames={pokemonNames} fetchPokemonByName={fetchPokemonByName} clearSearch={clearSearch} /> 
             <PokemonGrid pokemons={filteredPokemons} />
             <LoadMoreButton onClick={fetchPokemons} />
-            <TypeActionButton /> 
+            <TypeActionButton resetFilters={resetFilters} />
         </div>
     );
 };
