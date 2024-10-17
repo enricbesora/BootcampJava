@@ -35,3 +35,18 @@ code {
 .fixed-action-btn ul li {
   margin-bottom: 4px !important;
 }
+
+.list-btn {
+  left: 1vw;
+  top: 6vh;
+}
+
+.fixed-action-btn.reset-btn {
+  left: 1vw;
+  bottom: 1vh;
+}
+
+.fixed-action-btn ul {
+  width: 90vw !important;
+  left: 52px !important;
+}

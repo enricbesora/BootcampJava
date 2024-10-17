@@ -22,14 +22,14 @@ const Home = () => {
         setPokemonNames(pokemonNamesData.pokemonNames);
         const elems = document.querySelectorAll('.fixed-action-btn');
         M.FloatingActionButton.init(elems, {
-            direction: 'top',
+            direction: 'right',
             hoverEnabled: false,
         });
     }, []);
 
 
     const fetchPokemons = async () => {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`);
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=102&offset=${offset}`);
         const data = await response.json();
     
         const promises = data.results.map(pokemon =>
@@ -43,7 +43,7 @@ const Home = () => {
         updatedAllPokemons.sort((a, b) => a.id - b.id);
     
         setAllPokemons(updatedAllPokemons);
-        setOffset(offset + 20);
+        setOffset(offset + 102);
     
         applyFilters(updatedAllPokemons, query, selectedType);
     };

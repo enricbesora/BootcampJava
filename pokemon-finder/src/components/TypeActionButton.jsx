@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { searchIcon } from '../utils/icons';
+import menuIcon from '../assets/icons/typeLogo.png';
+import refreshIcon from '../assets/icons/refreshIcon.png';
+
 
 const TypeActionButton = ({ resetFilters, onTypeSelect }) => {
     const [selectedType, setSelectedType] = useState(null);
@@ -19,9 +22,9 @@ const TypeActionButton = ({ resetFilters, onTypeSelect }) => {
 
     return (
         <div style={{ position: 'relative', display: 'flex' }}>
-            <div className="fixed-action-btn click-to-toggle direction-top" style={{ marginRight: '70px' }}>
+            <div className="fixed-action-btn click-to-toggle direction-right list-btn" style={{ height: '50px', width: '70px' }}>
                 <a className="btn-floating btn-large red">
-                    <i className="material-icons">menu</i>
+                <img src={menuIcon} alt="Menu" style={{left: '-21px', height: '100%', position: 'relative' }}/>
                 </a>
                 <ul>
                     <li><a className="btn-floating"><img src={searchIcon('water', selectedType !== 'water')} alt="Water" style={{ width: '100%', height: '100%' }} onClick={() => handleTypeClick('water')} /></a></li>
@@ -45,11 +48,12 @@ const TypeActionButton = ({ resetFilters, onTypeSelect }) => {
                 </ul>
             </div>
 
-            <div className="fixed-action-btn reset-btn">
+        
+             <div className="fixed-action-btn reset-btn" style={{ height: '50px'}}>
                 <a className="btn-floating btn-large yellow darken-2" onClick={handleResetClick}>
-                    <i className="material-icons">refresh</i>
+                    <img src={refreshIcon} alt="Refresh" style={{width: '100%', height: '100%' }}/>
                 </a>
-            </div>
+            </div> 
         </div>
     );
 };
