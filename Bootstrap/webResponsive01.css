@@ -1,0 +1,17 @@
+
+/*
+
+.col-sm-6 {
+    width: 48%;
+}
+
+.col-md-4 {
+    width: 31%;
+}
+    */
+
+.row>* {
+     padding-right: 0;
+    padding-left: 0; 
+    
+}

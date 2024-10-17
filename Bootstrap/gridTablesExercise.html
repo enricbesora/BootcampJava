@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bs tables</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <style>
+        /* Custom row styles */
+        .table-primary {
+            background-color: #cfe2ff;
+        }
+
+        .table-secondary {
+            background-color: #e2e3e5;
+        }
+
+        .table-success {
+            background-color: #d1e7dd;
+        }
+
+        .table-danger {
+            background-color: #f8d7da;
+        }
+
+        .table-warning {
+            background-color: #fff3cd;
+        }
+
+        .table-info {
+            background-color: #cff4fc;
+        }
+
+        .table-light {
+            background-color: #f8f9fa;
+        }
+
+        .table-dark {
+            background-color: #d6d8d9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h3>Color Table</h3>
+        <table class="table ">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Tel No.</th>
+                    <th scope="col">Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Default</td>
+                    <td>Suresh</td>
+                    <td>9000000</td>
+                    <td>@suresh</td>
+                </tr>
+                <tr class="table-primary">
+                    <td>Primary</td>
+                    <td>Rohini</td>
+                    <td>9000000</td>
+                    <td>@rohini</td>
+                </tr>
+                <tr class="table-secondary">
+                    <td>Secondary</td>
+                    <td>Trishi</td>
+                    <td>8000000</td>
+                    <td>@trishi</td>
+                </tr>
+                <tr class="table-success">
+                    <td>Success</td>
+                    <td>Alavala</td>
+                    <td>7000000</td>
+                    <td>@alavala</td>
+                </tr>
+                <tr class="table-danger">
+                    <td>Danger</td>
+                    <td>Praveen</td>
+                    <td>6000000</td>
+                    <td>@praveen</td>
+                </tr>
+                <tr class="table-warning">
+                    <td>Warning</td>
+                    <td>Sateesh</td>
+                    <td>5000000</td>
+                    <td>@sateesh</td>
+                </tr>
+                <tr class="table-info">
+                    <td>Info</td>
+                    <td>Sushmitha</td>
+                    <td>4000000</td>
+                    <td>@sushmitha</td>
+                </tr>
+                <tr class="table-light">
+                    <td>Light</td>
+                    <td>Sudheer</td>
+                    <td>3000000</td>
+                    <td>@sudheer</td>
+                </tr>
+                <tr class="table-dark">
+                    <td>Dark</td>
+                    <td>Tulasi</td>
+                    <td>2000000</td>
+                    <td>@tulasi</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container mt-5">
+        <h3>Hover Table</h3>
+        <table class="table table-hover">
+          <thead class="table-light">
+            <tr>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Tel No.</th>
+              <th scope="col">Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Suresh</td>
+              <td>Dasari</td>
+              <td>9000000</td>
+              <td>@suresh</td>
+            </tr>
+            <tr>
+              <td>Rohini</td>
+              <td>Alavala</td>
+              <td>8000000</td>
+              <td>@rohini</td>
+            </tr>
+            <tr>
+              <td>Trishika</td>
+              <td>Dasari</td>
+              <td>7000000</td>
+              <td>@trishi</td>
+            </tr>
+          </tbody>
+        </table>
+    
+        <h3 class="mt-5">Striped Table</h3>
+        <table class="table table-striped">
+          <thead class="table-light">
+            <tr>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Tel No.</th>
+              <th scope="col">Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Peter</td>
+              <td>Mark</td>
+              <td>Not Available</td>
+              <td>Not Available</td>
+            </tr>
+            <tr>
+              <td>Peter</td>
+              <td>Mark</td>
+              <td>Not Available</td>
+              <td>Not Available</td>
+            </tr>
+            <tr>
+              <td>Peter</td>
+              <td>Mark</td>
+              <td>Not Available</td>
+              <td>Not Available</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
