@@ -35,8 +35,12 @@
     margin-right: 5px;
   }
 
-  span{
+  span, p{
     font-family: 'PokemonGB', sans-serif;
+  }
+
+  .nameContent{
+    height: 1.25rem;
   }
   
   .pokemon-types {

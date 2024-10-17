@@ -32,3 +32,6 @@ code {
 .suggestions li:hover {
   background-color: #f0f0f0;
 }
+.fixed-action-btn ul li {
+  margin-bottom: 4px !important;
+}

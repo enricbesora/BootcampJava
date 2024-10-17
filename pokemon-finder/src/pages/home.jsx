@@ -2,62 +2,120 @@ import React, { useState, useEffect } from 'react';
 import SearchBar from '../components/searchBar';
 import PokemonGrid from '../components/pokemonGrid';
 import LoadMoreButton from '../components/loadMoreButton';
+import pokemonNamesData from '../assets/pokemonNames.json';
+import TypeActionButton from '../components/TypeActionButton';
+import M from 'materialize-css';
+
 import axios from 'axios';
 
 const Home = () => {
-  const [allPokemons, setAllPokemons] = useState([]); // Lista completa de Pokémon
-  const [filteredPokemons, setFilteredPokemons] = useState([]); // Pokémon filtrados
-  const [query, setQuery] = useState(''); // Búsqueda actual
-  const [offset, setOffset] = useState(0); // Desplazamiento para la carga de más Pokémon
+    const [allPokemons, setAllPokemons] = useState([]); 
+    const [filteredPokemons, setFilteredPokemons] = useState([]); 
+    const [query, setQuery] = useState(''); 
+    const [offset, setOffset] = useState(0); 
+    const [pokemonNames, setPokemonNames] = useState([]); 
+    const [clearSearch, setClearSearch] = useState(false);
+    const [selectedType, setSelectedType] = useState(null);
 
-  const fetchPokemons = async () => {
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`);
-      const data = await response.json();
-      
-      const promises = data.results.map(pokemon => 
-          fetch(pokemon.url).then(res => res.json())
-      );
 
-      const newPokemons = await Promise.all(promises);
-      const updatedAllPokemons = [...allPokemons, ...newPokemons];
+    useEffect(() => {
+        setPokemonNames(pokemonNamesData.pokemonNames);
+        const elems = document.querySelectorAll('.fixed-action-btn');
+        M.FloatingActionButton.init(elems, {
+            direction: 'top',
+            hoverEnabled: false,
+        });
+    }, []);
 
-      setAllPokemons(updatedAllPokemons);
-      setOffset(offset + 20);
 
-      if (query) {
-          const newFilteredPokemons = updatedAllPokemons.filter(pokemon =>
-              pokemon.name.toLowerCase().includes(query)
-          );
-          setFilteredPokemons(newFilteredPokemons);
-      } else {
-          setFilteredPokemons(updatedAllPokemons); // Si no hay filtro, mostramos todos
-      }
-  };
+    const fetchPokemons = async () => {
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`);
+        const data = await response.json();
+    
+        const promises = data.results.map(pokemon =>
+            fetch(pokemon.url).then(res => res.json())
+        );
+    
+        const newPokemons = await Promise.all(promises);
+    
+        const updatedAllPokemons = [...allPokemons, ...newPokemons];
+    
+        updatedAllPokemons.sort((a, b) => a.id - b.id);
+    
+        setAllPokemons(updatedAllPokemons);
+        setOffset(offset + 20);
+    
+        applyFilters(updatedAllPokemons, query, selectedType);
+    };
 
-  useEffect(() => {
-      fetchPokemons();
-  }, []);
+    const applyFilters = (pokemons, searchQuery, type) => {
+        let filtered = pokemons;
 
-  const handleSearch = (q) => {
-      setQuery(q);
-      if (q.length >= 3) {
-          const filtered = allPokemons.filter(pokemon =>
-              pokemon.name.toLowerCase().startsWith(q.toLowerCase())
-          );
-          setFilteredPokemons(filtered); // Actualizamos los Pokémon filtrados
-      } else if (q.length === 0) {
-          setFilteredPokemons(allPokemons); // Si la query está vacía, mostramos todos los Pokémon
-      }
-  };
+        if (searchQuery) {
+            filtered = filtered.filter(pokemon =>
+                pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+        }
 
-  return (
-      <div className="container">
-          <h1 className="center-align">Pokédex</h1>
-          <SearchBar getQuery={handleSearch} pokemons={allPokemons} /> {/* Pasamos la lista completa de Pokémon */}
-          <PokemonGrid pokemons={filteredPokemons} />
-          <LoadMoreButton onClick={fetchPokemons} />
-      </div>
-  );
+        if (type) {
+            filtered = filtered.filter(pokemon =>
+                pokemon.types.some(pokemonType => pokemonType.type.name === type) // Filtrar por tipo
+            );
+        }
+
+        filtered.sort((a, b) => a.id - b.id);
+        setFilteredPokemons(filtered);
+    };
+
+
+    const resetFilters = () => {
+        setQuery('');
+        setSelectedType(null);
+        setFilteredPokemons(allPokemons); 
+        setClearSearch(true); 
+
+        setTimeout(() => {
+            setClearSearch(false);
+        }, 100);
+    };
+
+    useEffect(() => {
+        fetchPokemons();
+    }, []);
+
+    const fetchPokemonByName = async (name) => {
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+        const pokemon = await response.json();
+
+        const updatedAllPokemons = [...allPokemons, pokemon];
+        const updatedFilteredPokemons = [...filteredPokemons, pokemon];
+
+        updatedAllPokemons.sort((a, b) => a.id - b.id);
+        updatedFilteredPokemons.sort((a, b) => a.id - b.id);
+
+        setAllPokemons(updatedAllPokemons);
+        setFilteredPokemons(updatedFilteredPokemons);
+    };
+
+    const handleSearch = (q) => {
+        setQuery(q);
+        applyFilters(allPokemons, q, selectedType);
+    };
+
+    const handleTypeSelect = (type) => {
+        setSelectedType(type);
+        applyFilters(allPokemons, query, type);
+    };
+
+    return (
+        <div className="container">
+            <h1 className="center-align">Pokédex</h1>
+            <SearchBar getQuery={handleSearch} pokemons={allPokemons} pokemonNames={pokemonNames} fetchPokemonByName={fetchPokemonByName} clearSearch={clearSearch} /> 
+            <PokemonGrid pokemons={filteredPokemons} />
+            <LoadMoreButton onClick={fetchPokemons} />
+            <TypeActionButton resetFilters={resetFilters} onTypeSelect={handleTypeSelect} />
+        </div>
+    );
 };
 
 export default Home;
