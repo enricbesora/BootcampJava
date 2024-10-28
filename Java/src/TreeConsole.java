@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 import java.util.Scanner;
 
 public class TreeConsole {
@@ -22,16 +23,41 @@ public class TreeConsole {
 
         int maxLevel = Collections.max(levelList);
 
+        Random random = new Random();
+
         for (Integer integer : levelList) {
             levels = integer;
             int levelsAct = 0;
+            int cooldownCounter = 0;
 
             while (levelsAct != levels) {
                 for (int i = 0; i < maxLevel - levelsAct + 4; i++) {
-                    System.out.print(" ");
+                    System.out.print("\u001B[48;5;4m \u001B[0m");
                 }
+
+
                 for (int i = -1; i < levelsAct; i++) {
-                    System.out.print("**");
+                    String color1 = "\u001B[48;5;2m";
+                    String color2 = "\u001B[48;5;2m";
+
+
+                    if (cooldownCounter >= 4 && random.nextInt(100) < 60) {
+                        if (random.nextBoolean()) {
+                            color1 = "\u001B[48;5;1m";
+                        } else {
+                            color1 = "\u001B[48;5;3m";
+                        }
+                        cooldownCounter = 0;
+                    } else {
+                        cooldownCounter++;
+                    }
+
+                    System.out.print(color1 + "*" + "\u001B[0m");
+                    System.out.print(color2 + "*" + "\u001B[0m");
+                }
+
+                for (int i = 0; i < maxLevel - levelsAct + 4; i++) {
+                    System.out.print("\u001B[48;5;4m \u001B[0m");
                 }
                 System.out.println("");
                 levelsAct++;
@@ -41,10 +67,13 @@ public class TreeConsole {
 
         for (int j = 0; j < lineasTronco; j++) {
             for (int i = 0; i < maxLevel + 3; i++) {
-                System.out.print(" ");
+                System.out.print("\u001B[48;5;4m \u001B[0m");
             }
             for (int i = 0; i < 2; i++) {
-                System.out.print("**");
+                System.out.print("\u001B[48;5;94m**\u001B[0m");
+            }
+            for (int i = 0; i < maxLevel + 3; i++) {
+                System.out.print("\u001B[48;5;4m \u001B[0m");
             }
             System.out.println("");
         }
