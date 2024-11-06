@@ -7,6 +7,33 @@ public class Coche {
     public int puertas;
     public int kilometraje = 0;
     public double velocidad;
+    public Motor motor;
+    public Rueda ruedas;
+    public Combustible combustible;
+
+    public Motor getMotor() {
+        return motor;
+    }
+
+    public void setMotor(Motor motor) {
+        this.motor = motor;
+    }
+
+    public Rueda getRuedas() {
+        return ruedas;
+    }
+
+    public void setRuedas(Rueda ruedas) {
+        this.ruedas = ruedas;
+    }
+
+    public Combustible getCombustible() {
+        return combustible;
+    }
+
+    public void setCombustible(Combustible combustible) {
+        this.combustible = combustible;
+    }
 
     public String getModelo() {
         return modelo;
