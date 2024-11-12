@@ -8,7 +8,7 @@ public class Coche {
     public int kilometraje = 0;
     public double velocidad;
     public Motor motor;
-    public Rueda ruedas;
+    public Rueda[] ruedas;
     public Combustible combustible;
 
     public Motor getMotor() {
@@ -19,11 +19,11 @@ public class Coche {
         this.motor = motor;
     }
 
-    public Rueda getRuedas() {
+    public Rueda[] getRuedas() {
         return ruedas;
     }
 
-    public void setRuedas(Rueda ruedas) {
+    public void setRuedas(Rueda[] ruedas) {
         this.ruedas = ruedas;
     }
 
@@ -91,10 +91,20 @@ public class Coche {
     }
 
     public void recorrerDistancia(){
+        if (combustible.suficienteGasolina(motor.consumoCombustible(velocidad, kilometraje))) {
+            kilometraje += 10;
 
+            // Reduce el combustible necesario para la distancia recorrida
+            combustible.reducirCombustible(motor.consumoCombustible(velocidad, kilometraje));
+
+            System.out.println("El coche ha recorrido " + 10 + " km.");
+        } else {
+            System.out.println("Advertencia: No hay suficiente combustible para recorrer la distancia solicitada.");
+        }
     }
 
     public boolean adventerciaCombustible(){
-        return true;
+
+        return combustible.suficienteGasolina(motor.consumoCombustible(velocidad,kilometraje));
     }
 }
