@@ -1,7 +1,11 @@
 package com.example.controllers.entities;
 
+import lombok.Data;
+import lombok.Getter;
+
 import java.io.Serializable;
 
+@Data
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -10,6 +14,7 @@ public class User implements Serializable {
     private String name;
     private String surname;
 
+    /*
     public User() {
     }
 
@@ -41,5 +46,5 @@ public class User implements Serializable {
 
     public void setSurname(String surname) {
         this.surname = surname;
-    }
+    }*/
 }
